@@ -30,7 +30,13 @@ if ($result) {
             // Set session variables
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['first_name'] = $row['firstname'];
+            $_SESSION['middle_initial'] = $row['middle_initial'];
             $_SESSION['last_name'] = $row['lastname'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['contact'] = $row['contact'];
+            $_SESSION['role'] = $row['role'];
+
             echo "success";
         } else {
             echo "failed: Invalid password.";

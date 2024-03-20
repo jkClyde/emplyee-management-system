@@ -36,9 +36,27 @@
 <!-- Nav Item - Charts -->
 <li class="nav-item">
 <a class="nav-link" href="./employees.php">
-    <i class="fas fa-fw fa-chart-area"></i>
+    <i class="fas fa-user fa-chart-area"></i>
     <span>Manage Employees</span></a>
+
+  
 </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" >
+        <i class="fas fa-users"></i>
+        <span>Add Roles</span>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" >
+         <i class="far fa-calendar-alt"></i>
+        <span>Calendar</span>
+    </a>
+</li>
+
+    
 
 
 
