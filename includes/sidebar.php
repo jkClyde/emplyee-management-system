@@ -1,10 +1,11 @@
   <!-- Sidebar -->
-<!-- <style>
-    #accordionSidebar {
-   
- 
-} -->
-
+  <style>
+    @media (max-width: 768px) {
+        /* #accordionSidebar {
+            width: 0;
+        }
+       */
+    }
 </style>
 
 
