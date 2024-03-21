@@ -92,6 +92,7 @@
             <?php
                 include('includes/modals/add_employee.php');     
                 include('includes/modals/delete_employee.php');   
+                include('includes/modals/edit_employee.php')
             ?>
 
             
@@ -100,10 +101,9 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-    <?php
-        include('includes/modals/logout_modal.php');
-    ?>
-    <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalLabel"
+   
+
+<!-- <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -114,7 +114,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Form for editing employee -->
                 <form id="editEmployeeForm">
                     <input type="hidden" name="edit_id" id="edit_id">
                     <div class="form-group">
@@ -129,25 +128,27 @@
                         <label for="edit_age">Age</label>
                         <input type="number" class="form-control" id="edit_age" name="edit_age" required>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="edit_start_date">Start Date</label>
                         <input type="date" class="form-control" id="edit_start_date" name="edit_start_date" required>
-                    </div> -->
+                    </div>
                     <div class="form-group">
                         <label for="edit_salary">Salary</label>
                         <input type="number" class="form-control" id="edit_salary" name="edit_salary" required>
                     </div>
+
+           
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <?php
         include('includes/modals/logout_modal.php');
         include('includes/jquery_scripts.php');
-    ?>
+?>
   
 
 
@@ -179,6 +180,8 @@
                 $('#edit_age').val(response.age);
                 $('#edit_start_date').val(response.start_date);
                 $('#edit_salary').val(response.salary);
+                $('#edit_email').val(response.email);
+                $('#edit_contact').val(response.contact);
                 $('#editEmployeeModal').modal('show');
             },
             error: function(xhr, status, error) {

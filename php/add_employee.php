@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name     = isset($_POST['name']) ? $_POST['name'] : ''; 
     $position = isset($_POST['position']) ? $_POST['position'] : '';
     $age      = isset($_POST['age']) ? $_POST['age'] : '';
+    $email      = isset($_POST['email']) ? $_POST['email'] : '';
+    $contact      = isset($_POST['contact']) ? $_POST['contact'] : '';
     $start_date = isset($_POST['start_date']) ? $_POST['start_date'] : '';
     $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
 
@@ -23,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response = array('success' => false, 'message' => "Employee '$name' already exists");
     } else {
         // No duplicate found, proceed with insertion
-        $insert_sql = "INSERT INTO tbl_employees (name, position, age, start_date, salary) 
-                       VALUES (?, ?, ?, ?, ?)";
+        $insert_sql = "INSERT INTO tbl_employees (name, position, age, email, contact,  start_date, salary) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
         $insert_stmt = mysqli_prepare($conn, $insert_sql);
-        mysqli_stmt_bind_param($insert_stmt, "ssiss", $name, $position, $age, $start_date, $salary);
+        mysqli_stmt_bind_param($insert_stmt, "ssssssd", $name, $position, $age, $email, $contact,  $start_date, $salary);
 
         if (mysqli_stmt_execute($insert_stmt)) {
             // Success message with employee's name

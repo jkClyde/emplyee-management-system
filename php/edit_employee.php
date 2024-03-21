@@ -10,11 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $position = $_POST['edit_position'];
     $age = $_POST['edit_age'];
     $salary = $_POST['edit_salary'];
+    $start_date = $_POST['edit_start_date'];
+    $email = $_POST['edit_email'];
+    $contact = $_POST['edit_contact'];
 
     // Prepare and execute the SQL query to update the employee record
-    $query = "UPDATE tbl_employees SET name=?, position=?, age=?, salary=? WHERE id=?";
+    $query = "UPDATE tbl_employees SET name=?, position=?, age=?, salary=?, start_date=?, email=?, contact=? WHERE id=?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, 'ssdsi', $name, $position, $age, $salary, $id);
+    mysqli_stmt_bind_param($stmt, 'ssdsissi', $name, $position, $age, $salary, $start_date, $email, $contact, $id);
     $result = mysqli_stmt_execute($stmt);
 
     // Check if the update operation was successful
@@ -35,4 +38,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close database connection
 mysqli_close($conn);
-?>

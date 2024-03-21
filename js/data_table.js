@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 
   // CREATE ==================================================================================================================
-   $('#addEmployeeForm').on('submit', function(e) {
+  $('#addEmployeeForm').on('submit', function(e) {
     e.preventDefault(); 
 
     $.ajax({
@@ -48,38 +48,39 @@ $(document).ready(function() {
         success: function(response) {
             if (response.success) {
                 var successMessage = response.message;
-                reloadData()
+                reloadData();
                 $('#addEmployeeModal').modal('hide');
                 $('#success-notification').html(successMessage);
-                $('#success-notification').show();
                 $('#success-notification').show().delay(10000).fadeOut(); 
 
-                 // Use SweetAlert for success message
-                 Swal.fire({
-                  icon: 'success',
-                  title: 'Employee Added Successfully!',
-                  text: successMessage,
-                  timer: 5000,
-                  showConfirmButton: true
-              });
-         
+                // Use SweetAlert for success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Employee Added Successfully!',
+                    text: successMessage,
+                    timer: 5000,
+                    showConfirmButton: true
+                });
             } else {
-                // alert('Error adding employee: ' + response.message);
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: 'Error : ' +  response.message,
+                    text: 'Error: ' + response.message,
                     showConfirmButton: true
                 });
             }
         },
-        error: function() {
-            alert('Error submitting the form!');
+        error: function(jqXHR, textStatus, errorThrown) {
+            var errorMessage = jqXHR.responseText 
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error: ' + errorMessage,
+                showConfirmButton: true
+            });
         }
     });
 });
-
-
 
 
 
