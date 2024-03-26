@@ -20,7 +20,7 @@
  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
  <!-- Page level custom scripts -->
- <script src="js/data_table2.js"></script>
+ <script src="js/data_table22.js"></script>
 
 
  <!-- Cropper.js CSS -->
