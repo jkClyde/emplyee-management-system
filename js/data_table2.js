@@ -28,8 +28,6 @@ $(document).ready(function () {
       {
         data: null,
         render: function (data, type, row) {
-          // This function will be called for each row in the DataTable
-          // You can return HTML content here for the Actions column
           return (
             '<div class="d-flex justify-content-around">' +
             '<button class="btn btn-primary btn-sm edit-btn" data-toggle="tooltip" title="Edit" data-id="' +
