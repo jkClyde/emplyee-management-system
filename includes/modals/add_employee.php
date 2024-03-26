@@ -44,7 +44,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="addEmployeeForm" class="row">
+                <form id="addEmployeeForm" class="row" enctype="multipart/form-data" method="POST">
                     <!-- Image Section -->
                     <div class="col-md-3">
                         <div class="form-group">
@@ -53,7 +53,7 @@
                                 <img src="img/profile_silo.png" class="img-fluid" alt="" id="previewImage">
                             </div>
                             <!-- File Input for Image -->
-                            <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+                            <input class="form-control" type="file" name="image" id="image" accept=".jpg, .jpeg, .png" value="" />
                         </div>
                     </div>
 
@@ -74,12 +74,66 @@
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="position">Position</label>
                                     <input type="text" class="form-control" id="position" name="position" required>
                                 </div>
+                            </div> -->
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="position">Position</label>
+                                    <select class="form-control" id="position" name="position" required>
+                                        <option value="">Select Position</option>
+                                        <?php
+
+
+                                        // SQL query to fetch positions from tbl_categories
+                                        $sql = "SELECT * FROM tbl_categories";
+                                        $result = $conn->query($sql);
+
+                                        // If positions are found, generate options
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value=\"" . $row['category'] . "\">" . $row['category'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "No positions found";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="position">Designation</label>
+                                    <select class="form-control" id="designation" name="designation" required>
+                                        <option value="">Select Designation</option>
+                                        <?php
+
+                                        // SQL query to fetch positions from tbl_categories
+                                        $sql = "SELECT * FROM tbl_designation";
+                                        $result = $conn->query($sql);
+
+                                        // If positions are found, generate options
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<option value=\"" . $row['designation'] . "\">" . $row['designation'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "No positions found";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="age">Age</label>
@@ -193,6 +247,18 @@
 
 <script>
     $(document).ready(function() {
+        // Delegate change event for file inputs to the document
+        $(document).on('change', '#image', function() {
+            var input = this;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#previewImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        });
+
         // Function to clear all input fields in the form
         function clearForm() {
             $('#addEmployeeForm')[0].reset();
@@ -221,16 +287,13 @@
             $('#addEmployeeModal').modal('hide'); // Hide add employee modal
         });
 
-        // Preview image change event handler
-        $('#image').change(function() {
-            var input = this;
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#previewImage').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+        // ADD EMPLOYEE BUTTON CLICK ==================================================================================
+        $('#add_employee_button').click(function() {
+            $('#addEmployeeModal').modal('show');
         });
+        $('#addEmployeeModal').on('hidden.bs.modal', function() {
+            $('#addEmployeeForm')[0].reset();
+        });
+
     });
 </script>

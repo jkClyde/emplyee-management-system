@@ -1,13 +1,14 @@
 <?php
-    session_start();
-    if(empty($_SESSION['user_id'])){
-        header('Location: login.php');
-    }
-    include("php/db_init.php");
-?> 
+session_start();
+if (empty($_SESSION['user_id'] || empty($_SESSION['first_name']))) {
+    header('Location: login.php');
+}
+include("php/db_init.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,6 +30,7 @@
             border-radius: 50%;
             object-fit: cover;
         }
+
         .edit-button {
             margin-top: 10px;
         }
@@ -90,14 +92,15 @@
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
-            <?php // include('includes/footer.php'); ?>
+            <?php // include('includes/footer.php'); 
+            ?>
         </div>
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
     <?php
-        include('includes/modals/logout_modal.php');
-        include('includes/jquery_scripts.php');
+    include('includes/modals/logout_modal.php');
+    include('includes/jquery_scripts.php');
     ?>
 
     <script>
@@ -126,4 +129,5 @@
         });
     </script>
 </body>
+
 </html>

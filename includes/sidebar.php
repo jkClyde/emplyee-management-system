@@ -1,4 +1,3 @@
-
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -25,28 +24,28 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-    <a class="nav-link" href="./employees.php">
-        <i class="fas fa-user fa-chart-area"></i>
-        <span>Manage Employees</span></a>
+        <a class="nav-link" href="./employees.php">
+            <i class="fas fa-user fa-chart-area"></i>
+            <span>Manage Employees</span></a>
 
-    
+
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" >
+        <a class="nav-link collapsed" href="./categories.php">
             <i class="fas fa-users"></i>
-            <span>Add Roles</span>
+            <span>Add Categories</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" >
+        <a class="nav-link collapsed" href="./calendar.php">
             <i class="far fa-calendar-alt"></i>
             <span>Calendar</span>
         </a>
     </li>
 
-        
+
 
 
 
@@ -61,25 +60,25 @@
 
 <script>
     $(document).ready(function() {
-    // Function to toggle sidebar based on screen width
-    function toggleSidebar() {
-        if ($(window).width() < 768) {
-            $("body").addClass("sidebar-toggled");
-            $(".sidebar").addClass("toggled");
-            $('.sidebar .collapse').collapse('hide');
-        } else {
-            $("body").removeClass("sidebar-toggled");
-            $(".sidebar").removeClass("toggled");
+        // Function to toggle sidebar based on screen width
+        function toggleSidebar() {
+            if ($(window).width() < 768) {
+                $("body").addClass("sidebar-toggled");
+                $(".sidebar").addClass("toggled");
+                $('.sidebar .collapse').collapse('hide');
+            } else {
+                $("body").removeClass("sidebar-toggled");
+                $(".sidebar").removeClass("toggled");
+            }
         }
-    }
 
-    // Initial call to toggleSidebar
-    toggleSidebar();
-
-    // Call toggleSidebar on window resize
-    $(window).resize(function() {
+        // Initial call to toggleSidebar
         toggleSidebar();
+
+        // Call toggleSidebar on window resize
+        $(window).resize(function() {
+            toggleSidebar();
+        });
     });
-});
 </script>
 <!-- End of Sidebar -->

@@ -1,5 +1,5 @@
 <?php
- 
+
 /*
  * DataTables example server-side processing script.
  *
@@ -13,42 +13,45 @@
  *
  * @license MIT - https://datatables.net/license_mit
  */
- 
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Easy set variables
  */
- 
+
 // DB table to use
 $table = 'tbl_employees';
- 
+
 // Table's primary key
 $primaryKey = 'id';
- 
+
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case object
 // parameter names
 $columns = array(
-    array( 'db' => 'id', 'dt' => 'id' ),
-    array( 'db' => 'name', 'dt' => 'name' ),
-    array( 'db' => 'position',   'dt' => 'position' ),
-    array( 'db' => 'age',  'dt' => 'age' ),
+    array('db' => 'image_url', 'dt' => 'image_url'),
+    array('db' => 'id', 'dt' => 'id'),
+    array('db' => 'name', 'dt' => 'name'),
+    array('db' => 'position',   'dt' => 'position'),
+    array('db' => 'designation',   'dt' => 'designation'),
+    array('db' => 'age',  'dt' => 'age'),
     array(
         'db'        => 'start_date',
         'dt'        => 'start_date',
-        'formatter' => function( $d, $row ) {
-            return date( 'jS M y', strtotime($d));
+        'formatter' => function ($d, $row) {
+            return date('F j, Y', strtotime($d));
         }
+
     ),
     array(
         'db'        => 'salary',
         'dt'        => 'salary',
-        'formatter' => function( $d, $row ) {
-            return '₱'.number_format($d);
+        'formatter' => function ($d, $row) {
+            return '₱' . number_format($d);
         }
     )
 );
- 
+
 // SQL server connection information
 $sql_details = array(
     'user' => 'root',
@@ -56,17 +59,15 @@ $sql_details = array(
     'db'   => 'db_ems',
     'host' => 'localhost'
 );
- 
- 
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
- 
-require( 'ssp.class.php' );
- 
-echo json_encode(
-    SSP::simple( $_POST, $sql_details, $table, $primaryKey, $columns )
-);
 
-?>
+require('ssp.class.php');
+
+echo json_encode(
+    SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
+);
